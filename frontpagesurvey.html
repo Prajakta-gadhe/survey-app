@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Form with Navbar</title>
+    <link rel="stylesheet" href="styleofquebank.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    
+</head>
+<body>
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <div class="left-section">
+            <div class="icon">📄</div>
+            <div class="title">Untitled form</div>
+        </div>
+        <div class="right-section">
+            <div class="icon" title="Customize Theme" onclick="toggleDarkMode()">🎨</div>
+            <div class="icon" title="Preview" onclick="previewForm()">👁️</div>
+            <div class="icon" title="Undo" onclick="undoAction()">↩️</div>
+            <div class="icon" title="Redo" onclick="redoAction()">↪️</div>
+            <div class="dropdown">
+                <div class="dropdown-icon" title="More Options">⋮</div>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadPDF()"><i class="fas fa-print dropdown-icon"></i>Print</a>
+                    <a href="#"><i class="fas fa-trash dropdown-icon"></i>Move to trash</a>
+                    <a href="#"><i class="fas fa-pencil-alt dropdown-icon"></i>Pre-fill form</a>
+                    <a href="#"><i class="fas fa-code dropdown-icon"></i>Embed HTML</a>
+                    <a href="#"><i class="fas fa-puzzle-piece dropdown-icon"></i>Get add-ons</a>
+                    <a href="#"><i class="fas fa-keyboard dropdown-icon"></i>Keyboard shortcuts</a>
+                </div>
+            </div>
+            <div class="icon" title="Link">🔗</div>
+            <div class="icon" title="Collaborate">👥</div>
+            <div class="button" title="Publish">Publish</div>
+            <div class="profile-icon" title="Profile"><a href="/signuppage.html">👤</a></div>
+        </div>
+    </div>
+
+    <!-- Form Section -->
+    <main>
+        <div class="form-container">
+            <div class="form-header">
+                <div class="top-line"></div>
+                <input type="text" id="form-title" placeholder="Untitled form">
+                <input type="text" id="form-description" placeholder="Form description">
+            </div>
+            <div class="spacer"></div>
+            <div class="question-section" id="question-section">
+                <div class="question-container">
+                    <input type="text" class="question-title" placeholder="Untitled Question">
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="option">
+                            <input type="text" class="option-text" placeholder="Option 1">
+                            <button onclick="removeOption(this)">Remove</button>
+                        </div>
+                        <div class="add-option">
+                            <button onclick="addOption(this)">Add option</button> or
+                            <button onclick="addOther(this)">Add "Other"</button>
+                        </div>
+                    </div>
+                    <!-- Question Type Dropdown -->
+                    <div class="question-type-dropdown">
+                        <select onchange="changeQuestionType(this)">
+                            <option value="multiple-choice">Multiple Choice</option>
+                            <option value="paragraph">Paragraph</option>
+                            <option value="short-answer">Short Answer</option>
+                            <option value="checkboxes">Checkboxes</option>
+                            <option value="dropdown">Dropdown</option>
+                            <option value="date">Date</option>
+                            <option value="time">Time</option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-footer">
+                <label>
+                    <input type="checkbox" id="required-checkbox"> Required
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="submit-button" onclick="submitForm()">Submit</button>
+    </main>
+
+    <div class="toolbar">
+        <button data-tooltip="Add" onclick="addQuestion()" title="Add"><span>&#43;</span></button>
+       <a href="/C:/Pictures/"><button data-tooltip="Upload" title="Upload"><span>&#128193;</span></button></a>
+        <button data-tooltip="Text" title="Text"><span>Tt</span></button>
+       <a href=""> <button data-tooltip="Image" title="Image"><span>&#128247;</span></button></a>
+       <a href="https://www.youtube.com/"> <button data-tooltip="Add video" title="Add video"><span>&#127916;</span></button></a>
+        <!-- <button data-tooltip="More" title="More"><span>&#9776;</span></button> -->
+        <button data-tooltip="Add Section" onclick="addSection()" title="Add Section"><span>&#9728;</span></button>
+    </div>
+
+    <script src="dynamicQuestion.js"></script>
+</body>
+</html>
